@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Copilots Hub — Backlog & Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F1EA;
+    --bg-card: #FBF8F3;
+    --bg-elevated: #FFFFFF;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --ink-mute: #8A8580;
+    --line: #E8E1D5;
+    --accent: #2F6F4F;
+    --accent-soft: #E5EFE8;
+    --warm: #C76E3F;
+    --warm-soft: #F4E4D7;
+    --cool: #4A6B8A;
+    --cool-soft: #DDE6EF;
+    --rose: #B5485E;
+    --rose-soft: #F4DCE2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* Top nav */
+  nav.top {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(245, 241, 234, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+  }
+  nav.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .logo { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; font-size: 13px; color: var(--ink-soft); }
+  .nav-links a { color: inherit; text-decoration: none; transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  /* Hero */
+  .hero { padding: 96px 0 80px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 24px;
+    padding: 6px 12px; background: var(--accent-soft); border-radius: 100px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.05; letter-spacing: -0.025em;
+    font-weight: 400; margin-bottom: 32px;
+    max-width: 920px;
+  }
+  h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .lead {
+    font-size: 20px; line-height: 1.55; color: var(--ink-soft);
+    max-width: 720px; margin-bottom: 40px;
+  }
+  .meta-row {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    padding-top: 32px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--ink-mute);
+  }
+  .meta-row strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 4px; }
+
+  /* Sections */
+  section { padding: 80px 0; border-top: 1px solid var(--line); }
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-size: 14px; color: var(--ink-mute); font-style: italic;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1; letter-spacing: -0.02em;
+    font-weight: 400; margin-bottom: 16px;
+  }
+  .section-lead {
+    font-size: 18px; color: var(--ink-soft);
+    max-width: 720px; margin-bottom: 56px;
+  }
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px; font-weight: 500;
+    margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  h4 {
+    font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--ink-mute);
+    margin-bottom: 12px;
+  }
+  p { margin-bottom: 12px; color: var(--ink-soft); }
+  p:last-child { margin-bottom: 0; }
+
+  /* Pillars */
+  .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 720px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 28px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .pillar:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+  .pillar-tag {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-mute); margin-bottom: 8px; font-weight: 500;
+  }
+  .pillar-title { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 8px; }
+  .pillar-desc { font-size: 14px; color: var(--ink-soft); }
+
+  /* Shifts table */
+  .shifts { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--bg-card); }
+  @media (max-width: 720px) { .shifts { grid-template-columns: 1fr; } }
+  .shift-row { display: contents; }
+  .shift-row > div { padding: 20px 24px; border-bottom: 1px solid var(--line); }
+  .shift-row:last-child > div { border-bottom: none; }
+  .shift-from { font-weight: 500; color: var(--ink); border-right: 1px solid var(--line); }
+  @media (max-width: 720px) { .shift-from { border-right: none; padding-bottom: 4px; } .shift-to { padding-top: 0; font-size: 14px; } }
+  .shift-to { color: var(--ink-soft); font-size: 15px; }
+
+  /* Architecture */
+  .arch { background: var(--bg-card); border: 1px solid var(--line); border-radius: 16px; padding: 32px; }
+  .arch-layer {
+    padding: 20px 24px; border-radius: 12px; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .arch-layer:last-child { margin-bottom: 0; }
+  .arch-layer.l4 { background: var(--rose-soft); }
+  .arch-layer.l3 { background: var(--warm-soft); }
+  .arch-layer.l2 { background: var(--accent-soft); }
+  .arch-layer.l1 { background: var(--cool-soft); }
+  .arch-label { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600; min-width: 60px; }
+  .arch-name { font-size: 14px; font-weight: 600; min-width: 140px; }
+  .arch-desc { font-size: 13px; color: var(--ink-soft); }
+  @media (max-width: 720px) { .arch-layer { flex-direction: column; align-items: flex-start; gap: 4px; } }
+
+  /* Horizons */
+  .horizons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
+  @media (max-width: 900px) { .horizons { grid-template-columns: 1fr; } }
+  .horizon {
+    padding: 28px; border-radius: 16px; border: 1px solid var(--line);
+  }
+  .horizon.now { background: var(--rose-soft); border-color: var(--rose); }
+  .horizon.next { background: var(--cool-soft); border-color: var(--cool); }
+  .horizon.later { background: var(--accent-soft); border-color: var(--accent); }
+  .horizon-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+  .horizon.now .horizon-tag { color: var(--rose); }
+  .horizon.next .horizon-tag { color: var(--cool); }
+  .horizon.later .horizon-tag { color: var(--accent); }
+  .horizon-period { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px; }
+  .horizon-desc { font-size: 14px; color: var(--ink-soft); }
+
+  /* Epics */
+  .epics-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  details.epic {
+    background: var(--bg-elevated); border: 1px solid var(--line);
+    border-radius: 16px; overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  details.epic[open] { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+  details.epic summary {
+    padding: 24px 28px; cursor: pointer; list-style: none;
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  details.epic summary::-webkit-details-marker { display: none; }
+  .epic-id {
+    font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600;
+    color: var(--ink-mute); min-width: 70px;
+  }
+  .epic-title {
+    font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500;
+    flex: 1; min-width: 200px; letter-spacing: -0.01em;
+  }
+  .badge {
+    font-size: 11px; padding: 4px 10px; border-radius: 100px;
+    font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .badge.now { background: var(--rose-soft); color: var(--rose); }
+  .badge.next { background: var(--cool-soft); color: var(--cool); }
+  .badge.later { background: var(--accent-soft); color: var(--accent); }
+  .badge.rice {
+    background: var(--bg); color: var(--ink); border: 1px solid var(--line);
+    font-family: 'Fraunces', serif; text-transform: none; letter-spacing: 0;
+  }
+  .epic-body { padding: 0 28px 28px; border-top: 1px solid var(--line); padding-top: 24px; }
+  .epic-body h4 { margin-top: 20px; }
+  .epic-body h4:first-child { margin-top: 0; }
+  .epic-body ul { margin: 12px 0 0 0; padding-left: 0; list-style: none; }
+  .epic-body li {
+    padding: 12px 0 12px 24px; border-bottom: 1px dashed var(--line);
+    color: var(--ink-soft); font-size: 14px; position: relative;
+  }
+  .epic-body li:last-child { border-bottom: none; }
+  .epic-body li::before {
+    content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600;
+  }
+  .epic-body li strong { color: var(--ink); font-family: 'Fraunces', serif; font-weight: 600; margin-right: 6px; }
+  .epic-rationale {
+    background: var(--bg-card); border-left: 3px solid var(--accent);
+    padding: 16px 20px; border-radius: 0 8px 8px 0; font-size: 14px;
+    color: var(--ink-soft); margin-top: 8px;
+  }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--bg-card); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead { background: var(--bg-card); }
+  th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; color: var(--ink-mute); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--bg-elevated); }
+  td.num { font-variant-numeric: tabular-nums; font-weight: 500; color: var(--ink); }
+  td.rank { font-family: 'Fraunces', serif; font-weight: 600; color: var(--ink-mute); width: 40px; }
+
+  /* Tier cards */
+  .tiers { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .tier {
+    background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 24px;
+  }
+  .tier-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+  .tier-name { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; }
+  .tier-tag { font-size: 12px; color: var(--ink-mute); }
+  .tier-list { font-size: 14px; color: var(--ink-soft); }
+  .tier-list span { display: inline-block; padding: 3px 10px; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: 100px; margin: 3px 4px 3px 0; font-size: 12px; }
+
+  /* Sizing cards */
+  .sizes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .sizes { grid-template-columns: 1fr; } }
+  .size {
+    background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 28px;
+  }
+  .size-letter {
+    font-family: 'Fraunces', serif; font-size: 56px; line-height: 1;
+    color: var(--accent); margin-bottom: 8px; font-weight: 400;
+  }
+  .size-title { font-weight: 600; margin-bottom: 8px; font-size: 15px; }
+  .size-spec { font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; }
+  .size-budget {
+    padding-top: 16px; border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .size-budget strong { display: block; color: var(--ink); font-family: 'Fraunces', serif; font-size: 18px; }
+
+  /* Metrics */
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .metrics { grid-template-columns: 1fr; } }
+  .metric { background: var(--bg-card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+  .metric-name { font-size: 13px; color: var(--ink-mute); margin-bottom: 8px; }
+  .metric-val { font-family: 'Fraunces', serif; font-size: 36px; line-height: 1; color: var(--ink); margin-bottom: 8px; font-weight: 500; }
+  .metric-target { font-size: 13px; color: var(--accent); }
+
+  /* Open questions */
+  .questions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .questions { grid-template-columns: 1fr; } }
+  .question {
+    background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 20px;
+    font-size: 14px; color: var(--ink-soft);
+  }
+  .question::before {
+    content: 'Q'; display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; background: var(--warm); color: white;
+    border-radius: 50%; font-family: 'Fraunces', serif; font-weight: 600; font-size: 12px;
+    margin-right: 10px; vertical-align: middle;
+  }
+
+  /* Footer */
+  footer { padding: 60px 0; border-top: 1px solid var(--line); text-align: center; font-size: 13px; color: var(--ink-mute); }
+  footer p { color: var(--ink-mute); }
+
+  /* Vision quote */
+  .vision-quote {
+    font-family: 'Fraunces', serif; font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.3; letter-spacing: -0.015em; font-style: italic;
+    color: var(--ink); padding: 32px 0;
+    border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent);
+    margin: 24px 0 32px;
+  }
+  .anti-vision {
+    background: var(--warm-soft); border-radius: 16px; padding: 24px 28px;
+    border-left: 3px solid var(--warm);
+  }
+  .anti-vision h4 { color: var(--warm); margin-bottom: 8px; }
+  .anti-vision ul { list-style: none; margin: 8px 0 0 0; padding: 0; }
+  .anti-vision li { padding: 6px 0 6px 20px; position: relative; font-size: 14px; color: var(--ink-soft); }
+  .anti-vision li::before { content: '×'; position: absolute; left: 0; color: var(--warm); font-weight: 700; }
+
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <div class="logo">MWS AI <span>·</span> Corporate Copilots Hub</div>
+    <div class="nav-links">
+      <a href="#vision">Vision</a>
+      <a href="#shifts">Сдвиги</a>
+      <a href="#architecture">Архитектура</a>
+      <a href="#backlog">Бэклог</a>
+      <a href="#tech">Технические требования</a>
+      <a href="#metrics">Метрики</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Product Backlog · Roadmap · v0.2</div>
+    <h1>Corporate <em>Copilots</em> Hub.<br>Бэклог и стратегическая <em>дорожная карта</em>.</h1>
+    <p class="lead">On-premise платформа ИИ-ассистентов для enterprise и госсектора РФ. Семейство из 8 готовых вертикальных копилотов поверх MWS AI Agents Platform.</p>
+    <div class="meta-row">
+      <div><strong>Owner</strong>Екатерина Окунева, CPO</div>
+      <div><strong>Дата</strong>26 апреля 2026</div>
+      <div><strong>Сегмент</strong>Enterprise 1000+ FTE, Гос</div>
+      <div><strong>Стратегический фрейм</strong>OpenAI Workspace Agents (ноябрь 2025)</div>
+    </div>
+  </div>
+</header>
+
+<section id="vision">
+  <div class="wrap">
+    <div class="section-num">§ 01 — Видение</div>
+    <h2>Product Vision</h2>
+    <div class="vision-quote">
+      «Сделать ИИ-сотрудника штатной единицей в каждой крупной российской и государственной организации — без ухода данных за периметр.»
+    </div>
+
+    <h3 style="margin-top: 32px;">3-летняя цель (к концу 2028)</h3>
+    <div class="pillars" style="margin-top: 24px;">
+      <div class="pillar">
+        <div class="pillar-tag">Реcсh</div>
+        <div class="pillar-title">100+ клиентов</div>
+        <div class="pillar-desc">Enterprise и государственных организаций с активным MAU свыше 70%.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">Продукт</div>
+        <div class="pillar-title">8 вертикалей + marketplace</div>
+        <div class="pillar-desc">Production-grade копилоты + площадка для партнёрских.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">Финансы</div>
+        <div class="pillar-title">ARR &gt; 3 млрд ₽</div>
+        <div class="pillar-desc">От Hub как самостоятельного продукта в группе MWS AI.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">Compliance</div>
+        <div class="pillar-title">ФСТЭК К1/К2</div>
+        <div class="pillar-desc">Сертификация, реестр отечественного ПО, готовность к ГИС.</div>
+      </div>
+    </div>
+
+    <div class="anti-vision" style="margin-top: 32px;">
+      <h4>Anti-vision — что мы НЕ делаем</h4>
+      <ul>
+        <li>Не делаем публичный SaaS для SMB (поляна Cotype/GigaChat)</li>
+        <li>Не строим foundation models — мы платформа поверх Cotype/open-source</li>
+        <li>Не делаем агентов для физлиц</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="shifts">
+  <div class="wrap">
+    <div class="section-num">§ 02 — Стратегические сдвиги</div>
+    <h2>После OpenAI Workspace Agents</h2>
+    <p class="section-lead">Запуск Workspace Agents в ноябре 2025 переопределил рынок: агент перестал быть чат-ботом и стал членом команды. Вот что меняется в нашем продукте.</p>
+
+    <div class="shifts">
+      <div class="shift-row">
+        <div class="shift-from">Агент = член команды, а не чат</div>
+        <div class="shift-to">Persistent identity, профиль, «рабочее место», history, mentions <code>@ии-юрист</code></div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-from">Async long-running tasks</div>
+        <div class="shift-to">Очередь задач, push-уведомления, агент работает часы и дни</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-from">Multi-agent collaboration</div>
+        <div class="shift-to">Оркестратор, агент-агент протокол, «комитеты» (как у нас уже в Инвест-менеджере)</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-from">Shared workspace</div>
+        <div class="shift-to">Совместные пространства «человек + агенты», каналы по проектам, общий контекст</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-from">Connectors как первый класс</div>
+        <div class="shift-to">Маркетплейс к РФ-системам: 1С, SAP, Directum, Bitrix, ELMA, Диадок, КонсультантПлюс</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-from">Approval flows</div>
+        <div class="shift-to">Human-in-the-loop для action-агентов: согласование перед отправкой письма / проводки / договора</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-from">Governance &amp; audit</div>
+        <div class="shift-to">DLP, RBAC до уровня документа, audit trail каждого действия, политики ИБ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap">
+    <div class="section-num">§ 03 — Архитектура</div>
+    <h2>Четыре пиллaра продукта</h2>
+    <p class="section-lead">Слоистая архитектура: фундамент (модели, RAG, identity) → платформа агентов → workspace → готовые приложения.</p>
+
+    <div class="arch">
+      <div class="arch-layer l4">
+        <div class="arch-label">L4</div>
+        <div class="arch-name">Applications</div>
+        <div class="arch-desc">Core Copilot · Юрист · Финансист · Бухгалтер · Рекрутер · B2B-продавец · Аналитик · Инвест-менеджер · Marketplace 3rd-party</div>
+      </div>
+      <div class="arch-layer l3">
+        <div class="arch-label">L3</div>
+        <div class="arch-name">Workspace</div>
+        <div class="arch-desc">Чаты · Каналы · Mentions · Tasks · Approvals · Notifications</div>
+      </div>
+      <div class="arch-layer l2">
+        <div class="arch-label">L2</div>
+        <div class="arch-name">Agent Platform</div>
+        <div class="arch-desc">No-code конструктор · Оркестратор · Tools · Memory · Eval</div>
+      </div>
+      <div class="arch-layer l1">
+        <div class="arch-label">L1</div>
+        <div class="arch-name">Foundation</div>
+        <div class="arch-desc">Cotype / Open LLM · RAG · Connectors · Identity · Audit · DLP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="backlog">
+  <div class="wrap">
+    <div class="section-num">§ 04 — Бэклог</div>
+    <h2>20 эпиков по трём горизонтам</h2>
+    <p class="section-lead">Приоритизация по RICE. Reach × Impact × Confidence / Effort. Кликните по эпику, чтобы раскрыть user stories и обоснование.</p>
+
+    <div class="horizons">
+      <div class="horizon now">
+        <div class="horizon-tag">● Now</div>
+        <div class="horizon-period">Q2 — Q3 2026</div>
+        <div class="horizon-desc">Фундамент платформы и продакшн-готовность того, что уже построено.</div>
+      </div>
+      <div class="horizon next">
+        <div class="horizon-tag">● Next</div>
+        <div class="horizon-period">Q4 2026 — Q1 2027</div>
+        <div class="horizon-desc">Workspace-парадигма, marketplace, governance enterprise-уровня.</div>
+      </div>
+      <div class="horizon later">
+        <div class="horizon-tag">● Later</div>
+        <div class="horizon-period">Q2 — Q4 2027</div>
+        <div class="horizon-desc">Отраслевые вертикали, гос-сертификация, экспорт в СНГ/БРИКС.</div>
+      </div>
+    </div>
+
+    <div class="epics-grid">
+
+      <details class="epic" open>
+        <summary>
+          <span class="epic-id">EPIC-01</span>
+          <span class="epic-title">Unified Hub Shell — единая точка входа</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 7.5</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Сегодня каждый копилот — отдельный UI. На демо клиенты путаются: «это разные продукты или один?». Без единого шелла нельзя продавать как платформу — продаём как набор разрозненных решений с нулевым cross-sell.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-01.1</strong>Как сотрудник я открываю один URL и вижу все доступные мне копилоты (по правам), переключаюсь без повторного логина (SSO).</li>
+            <li><strong>US-01.2</strong>Как админ я в одной консоли назначаю какие копилоты доступны каким группам AD/Keycloak.</li>
+            <li><strong>US-01.3</strong>Как пользователь я ищу по всем своим чатам со всеми копилотами одной строкой.</li>
+            <li><strong>US-01.4</strong>Как пользователь я закрепляю избранные копилоты на главном экране.</li>
+            <li><strong>US-01.5</strong>Как сотрудник я вижу единую историю запросов с фильтром по копилоту/проекту/дате.</li>
+          </ul>
+          <h4>Acceptance criteria</h4>
+          <p>SSO через Keycloak/AD FS/ЕСИА; единая навигация; глобальный поиск ≤2 сек; mobile-responsive.</p>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-02</span>
+          <span class="epic-title">On-prem Reference Architecture &amp; Deployment Toolkit</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 5.4</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">On-premise — наш ключевой дифференциатор vs OpenAI/Anthropic и vs облачных GigaChat/YandexGPT для гос. Сейчас каждое внедрение — кастомный проект на 2–4 месяца. Цель: time-to-deploy с 90 до 14 дней.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-02.1</strong>DevOps клиента разворачивает Hub в Kubernetes одним helm-чартом под RHEL/Astra Linux/РЕД ОС.</li>
+            <li><strong>US-02.2</strong>ИБ-офицер получает готовый пакет: модель угроз, регламент, инструкции пользователю.</li>
+            <li><strong>US-02.3</strong>DevOps подключает встроенную/внешнюю Cotype или открытую LLM (Qwen, GigaChat on-prem) переключением конфига.</li>
+            <li><strong>US-02.4</strong>Админ мониторит утилизацию GPU/RAM в Grafana (готовые дашборды).</li>
+            <li><strong>US-02.5</strong>Клиент получает SLA-плейбук для air-gap-окружений.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-03</span>
+          <span class="epic-title">Connector Framework v1 — РФ-системы first</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 3.75</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Без интеграций копилот = умный чат-бот. Workspace Agents выиграет за счёт connector-marketplace в Drive/Gmail/Slack. Наш ответ — те же надёжные коннекторы к РФ-стеку. Главный blocker enterprise-сделок.</div>
+          <h4>Приоритеты коннекторов</h4>
+          <div class="table-wrap" style="margin-top: 12px;">
+            <table>
+              <thead><tr><th>Система</th><th>Кому критично</th><th>Приоритет</th></tr></thead>
+              <tbody>
+                <tr><td>1С (УПП, ERP, ЗУП)</td><td>Бухгалтер, Финансист, Юрист</td><td class="num">P0</td></tr>
+                <tr><td>Directum / DocsVision / Tessa</td><td>Core, Юрист</td><td class="num">P0</td></tr>
+                <tr><td>Bitrix24 / Mango / amoCRM</td><td>B2B-продавец</td><td class="num">P0</td></tr>
+                <tr><td>Диадок / СБИС</td><td>Бухгалтер</td><td class="num">P0</td></tr>
+                <tr><td>AD / Keycloak / ЕСИА</td><td>Identity для всех</td><td class="num">P0</td></tr>
+                <tr><td>Confluence / Wiki.js / МойОфис</td><td>Core</td><td class="num">P1</td></tr>
+                <tr><td>Jira / Yandex Tracker</td><td>Core, Аналитик</td><td class="num">P1</td></tr>
+                <tr><td>КонсультантПлюс / Гарант</td><td>Юрист</td><td class="num">P1</td></tr>
+                <tr><td>SAP / Oracle EBS</td><td>Финансист (large enterprise)</td><td class="num">P2</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-04</span>
+          <span class="epic-title">Agent Identity &amp; Mentions — «агент как сотрудник»</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 8.0</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Главный сдвиг от Workspace Agents — агент имеет имя, профиль, аватар. Это не косметика: меняет восприятие с «инструмент» на «коллега» → растёт engagement и DAU. Дешёвая фича с большим эффектом.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-04.1</strong>Админ даёт агенту имя, аватар, описание роли.</li>
+            <li><strong>US-04.2</strong>Сотрудник упоминает <code>@юрист-аня</code> в чате и втягивает агента в обсуждение.</li>
+            <li><strong>US-04.3</strong>Сотрудник видит карточку агента: что умеет, к каким данным имеет доступ, кто owner.</li>
+            <li><strong>US-04.4</strong>Админ создаёт несколько инстансов одного агента под разные департаменты.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-05</span>
+          <span class="epic-title">Async Tasks &amp; Long-running Agents</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 3.36</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Workspace Agents продают именно long-running. Сегодня все наши копилоты — синхронные (≤60 сек). Это потолок ценности. Async открывает кейсы: «проверь 500 договоров за ночь», «собери досье на 30 кандидатов».</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-05.1</strong>Пользователь ставит задачу «проверь 200 договоров в папке Q2» и закрывает окно — получает push, когда готово.</li>
+            <li><strong>US-05.2</strong>Видит панель «Мои задачи» с прогрессом каждого агента.</li>
+            <li><strong>US-05.3</strong>Может прервать долгую задачу или скорректировать на лету.</li>
+            <li><strong>US-05.4</strong>Админ ставит квоты на длительность/стоимость задач по группам.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-06</span>
+          <span class="epic-title">Approval Flows &amp; Human-in-the-loop</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 5.3</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Без approval-flows нельзя дать агенту action-tools (отправить письмо, провести проводку). Это блокер перехода от «ассистент» к «агент». Юр. отдел и ИБ требуют это первым же вопросом на пилоте.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-06.1</strong>Админ настраивает политику: «проводки &gt;100 тыс ₽ требуют подтверждения главбуха».</li>
+            <li><strong>US-06.2</strong>Менеджер получает в Telegram/почту запрос approve/reject с превью и обоснованием.</li>
+            <li><strong>US-06.3</strong>Аудитор видит полный лог: что предложил агент, кто approved, когда выполнено.</li>
+            <li><strong>US-06.4</strong>Пользователь может затребовать «explain» — почему агент предлагает именно это.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-07</span>
+          <span class="epic-title">Production-grade Eval &amp; Quality Gate</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 4.0</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Заявленные 97% качества — маркетинг. В реальности нет регулярного eval по версиям. Каждое обновление модели = риск регрессий у клиентов. Без этого нельзя продавать SLA по качеству.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-07.1</strong>ML-инженер запускает золотой набор (≥500 кейсов на копилот) автоматически на каждом релизе.</li>
+            <li><strong>US-07.2</strong>PM видит dashboard: precision/recall/halluc-rate по версиям.</li>
+            <li><strong>US-07.3</strong>Клиент получает отчёт по качеству на своих данных раз в месяц.</li>
+            <li><strong>US-07.4</strong>Можно прогнать A/B двух версий промпта на проде с 5% трафика.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-08</span>
+          <span class="epic-title">RAG 2.0 — гибридный поиск + structured + цитирование</span>
+          <span class="badge now">Now</span>
+          <span class="badge rice">RICE 3.3</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">RAG — главный ROI-драйвер для всех копилотов. Сейчас vanilla vector-search → промахи на нумерованных пунктах ЛНА, табличных данных, доменных аббревиатурах. Юристам критично цитирование «пункт 4.2.1». Финансистам — drill-down до проводки.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-08.1</strong>Юрист-копилот отдаёт ответ с прямыми ссылками на пункты документа (anchor-level citation).</li>
+            <li><strong>US-08.2</strong>Финансист может drill-down от ответа до проводки в 1С.</li>
+            <li><strong>US-08.3</strong>Админ добавляет свой словарь синонимов/аббревиатур.</li>
+            <li><strong>US-08.4</strong>RAG-движок учитывает структуру документа (заголовки, таблицы, нумерация).</li>
+            <li><strong>US-08.5</strong>Пользователь видит confidence score и явный отказ «не нашёл» вместо галлюцинации.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-09</span>
+          <span class="epic-title">Workspace Channels &amp; Multi-agent Collaboration</span>
+          <span class="badge next">Next</span>
+          <span class="badge rice">RICE 1.6</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Главный архитектурный шаг к Workspace Agents-парадигме. Каналы по проектам, где работают люди + несколько агентов одновременно. У нас уже есть прототип multi-agent в Инвест-менеджере (5 аналитиков) — обобщаем как платформенную фичу.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-09.1</strong>PM проекта создаёт канал «Сделка X» и приглашает <code>@ии-юрист</code>, <code>@ии-финансист</code>, <code>@ии-аналитик</code>.</li>
+            <li><strong>US-09.2</strong>Агент видит контекст канала и переписку других агентов, может к ним обращаться.</li>
+            <li><strong>US-09.3</strong>Пользователь видит, когда один агент делегирует задачу другому.</li>
+            <li><strong>US-09.4</strong>Админ настраивает allowed agent-to-agent communication (DLP).</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-10</span>
+          <span class="epic-title">Copilot Marketplace — внутренний и партнёрский</span>
+          <span class="badge next">Next</span>
+          <span class="badge rice">RICE 1.4</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Закрывает long-tail вертикалей. Мы не сделаем копилотов под нефтегаз/металлургию/транспорт сами — даём платформу партнёрам (СИ, отраслевые вендоры). Аналог GPT Store, но enterprise. Источник marketplace-revenue 30/70.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-10.1</strong>Партнёр публикует копилот в маркетплейс, проходя ревью качества и ИБ.</li>
+            <li><strong>US-10.2</strong>Админ клиента видит каталог, фильтрует по индустрии, ставит в свой контур одной кнопкой.</li>
+            <li><strong>US-10.3</strong>Партнёр получает аналитику использования и revenue-share отчёт.</li>
+            <li><strong>US-10.4</strong>MWS модерирует копилоты, отзывает при инцидентах.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-11</span>
+          <span class="epic-title">Agent Memory &amp; Personalization</span>
+          <span class="badge next">Next</span>
+          <span class="badge rice">RICE 3.6</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Сейчас агент забывает контекст между сессиями. Workspace Agents — с persistent memory. Без памяти агент = stateless tool, с памятью = коллега, который тебя знает. Boost для DAU/retention.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-11.1</strong>Пользователь говорит «помни, что я отвечаю за регион Урал» — агент применяет это во всех будущих ответах.</li>
+            <li><strong>US-11.2</strong>Видит/редактирует/удаляет, что агент о нём помнит.</li>
+            <li><strong>US-11.3</strong>Админ задаёт политику, что агент НЕ должен запоминать (PII, медданные).</li>
+            <li><strong>US-11.4</strong>Агент хранит project-level memory отдельно от user-level.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-12</span>
+          <span class="epic-title">Voice &amp; Multi-modal Input</span>
+          <span class="badge next">Next</span>
+          <span class="badge rice">RICE 1.9</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Топ-менеджмент enterprise редко печатает. Голос на мобиле + загрузка фото документа = 10x adoption у C-level и полевых сотрудников (склад, ритейл, стройка). MWS уже имеет голосовые модели.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-12.1</strong>Руководитель диктует запрос в мобильном приложении.</li>
+            <li><strong>US-12.2</strong>Кладовщик фотографирует накладную → ИИ-бухгалтер распознаёт и заводит.</li>
+            <li><strong>US-12.3</strong>Сотрудник загружает скан договора → ИИ-юрист анализирует.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-13</span>
+          <span class="epic-title">Governance Console — RBAC, DLP, Audit</span>
+          <span class="badge next">Next</span>
+          <span class="badge rice">RICE 6.0</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Без enterprise-grade governance не продадим в банки/гос/нефтегаз. Это не feature — это hygiene. ИБ-офицер на сделке за 10 минут зарезает продукт без RBAC до уровня документа, DLP-политик и полного audit-trail.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-13.1</strong>ИБ-офицер видит полный лог: кто, что спросил, что агент ответил, какие данные читал, какие действия выполнил.</li>
+            <li><strong>US-13.2</strong>Админ задаёт DLP-политики: «не показывать данные класса К1 пользователям без допуска».</li>
+            <li><strong>US-13.3</strong>Админ экспортирует audit-log в SIEM (KUMA, MaxPatrol).</li>
+            <li><strong>US-13.4</strong>ИБ настраивает PII-маскирование на лету.</li>
+            <li><strong>US-13.5</strong>Дашборд «топ-10 рискованных запросов за неделю».</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-14</span>
+          <span class="epic-title">ИИ-аналитик 2.0 — Text-to-SQL + BI</span>
+          <span class="badge next">Next</span>
+          <span class="badge rice">RICE 1.6</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Аналитик упомянут в семействе, но реально не построен. Спрос огромный: каждый CEO хочет «спросить у данных». Барьер — точность Text-to-SQL на грязных корп-схемах ~60%. Нужна семантическая модель и накопить датасет.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-14.1</strong>Руководитель спрашивает «выручка по СЗФО за март» — получает таблицу + график.</li>
+            <li><strong>US-14.2</strong>Аналитик подключает Greenplum/ClickHouse/PostgreSQL и описывает семантический слой через UI.</li>
+            <li><strong>US-14.3</strong>Пользователь видит explain — какой SQL агент сгенерил, почему.</li>
+            <li><strong>US-14.4</strong>Админ ограничивает агенту таблицы/строки по ролям.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-15</span>
+          <span class="epic-title">Notification &amp; Proactive Agents</span>
+          <span class="badge next">Next</span>
+          <span class="badge rice">RICE 3.27</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Эволюция от reactive («я спросил — ответил») к proactive («сам заметил — предупредил»). Уже частично есть в Финансист.Radar. Обобщаем: любой копилот может настроить триггер-наблюдение.</div>
+          <h4>User Stories</h4>
+          <ul>
+            <li><strong>US-15.1</strong>Финдир подписывается «расхождение по сверке &gt;1 млн ₽ — пингани меня».</li>
+            <li><strong>US-15.2</strong>HR получает алерт «ключевой сотрудник на риске ухода» (по сигналам HR-системы).</li>
+            <li><strong>US-15.3</strong>Юрист получает уведомление «истекает срок претензии».</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-16</span>
+          <span class="epic-title">Гос-сертификация — ФСТЭК К1/К2, реестр, ГИС</span>
+          <span class="badge later">Later</span>
+          <span class="badge rice">RICE 1.35</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Открывает гос-рынок, нацпроекты, ГК Ростех/Росатом. Долгий, дорогой, но стратегически без вариантов. Начинать формально в Q4 2026, продакшн — 2027.</div>
+          <h4>Compliance scope</h4>
+          <p>Включение в реестр отечественного ПО, аттестация по К1, поддержка ГОСТ-криптографии, совместимость с Astra Linux SE / РЕД ОС / Альт.</p>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-17</span>
+          <span class="epic-title">Отраслевые вертикали — 3 индустриальных копилота</span>
+          <span class="badge later">Later</span>
+          <span class="badge rice">RICE 0.9</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">После marketplace (EPIC-10) собираем 1–2 флагманских отраслевых копилота сами как reference. Кандидаты: Банковский комплаенс-офицер, Медицинский ассистент врача, Логистический диспетчер. Выбор — после market research в Q3 2026.</div>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-18</span>
+          <span class="epic-title">Agent Builder Studio — low-code для бизнес-юзеров</span>
+          <span class="badge later">Later</span>
+          <span class="badge rice">RICE 1.05</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Сейчас агентов настраивают разработчики на Agents Platform. Цель — дать инструмент бизнес-аналитику клиента (как Power Automate / n8n). Меняет unit-economics: один внедренец масштабирует на сотни агентов.</div>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-19</span>
+          <span class="epic-title">Federated / Hybrid deployment — on-prem + cloud burst</span>
+          <span class="badge later">Later</span>
+          <span class="badge rice">RICE 0.5</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Для крупнейших: чувствительные данные on-prem, тяжёлые вычисления burst в МТС Cloud. Узкий сегмент, но премиальный чек. Инвестируем после стабилизации on-prem.</div>
+        </div>
+      </details>
+
+      <details class="epic">
+        <summary>
+          <span class="epic-id">EPIC-20</span>
+          <span class="epic-title">Экспорт — СНГ, БРИКС</span>
+          <span class="badge later">Later</span>
+          <span class="badge rice">RICE 0.32</span>
+        </summary>
+        <div class="epic-body">
+          <h4>Обоснование</h4>
+          <div class="epic-rationale">Когда продукт стабилен на РФ — выход в Казахстан, Беларусь, Узбекистан, потенциально ОАЭ/Иран/ЮАР. Долгий горизонт, MWS как часть Системы имеет каналы.</div>
+        </div>
+      </details>
+
+    </div>
+
+    <h3 style="margin-top: 56px; margin-bottom: 16px;">Топ-15 по RICE</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Эпик</th><th>Горизонт</th><th>RICE</th></tr></thead>
+        <tbody>
+          <tr><td class="rank">01</td><td>EPIC-04 Agent Identity &amp; Mentions</td><td>Now</td><td class="num">8.0</td></tr>
+          <tr><td class="rank">02</td><td>EPIC-01 Unified Hub Shell</td><td>Now</td><td class="num">7.5</td></tr>
+          <tr><td class="rank">03</td><td>EPIC-13 Governance Console</td><td>Next</td><td class="num">6.0</td></tr>
+          <tr><td class="rank">04</td><td>EPIC-02 On-prem Reference Architecture</td><td>Now</td><td class="num">5.4</td></tr>
+          <tr><td class="rank">05</td><td>EPIC-06 Approval Flows</td><td>Now</td><td class="num">5.3</td></tr>
+          <tr><td class="rank">06</td><td>EPIC-07 Production Eval</td><td>Now</td><td class="num">4.0</td></tr>
+          <tr><td class="rank">07</td><td>EPIC-03 Connector Framework</td><td>Now</td><td class="num">3.75</td></tr>
+          <tr><td class="rank">08</td><td>EPIC-11 Agent Memory</td><td>Next</td><td class="num">3.6</td></tr>
+          <tr><td class="rank">09</td><td>EPIC-05 Async Tasks</td><td>Now</td><td class="num">3.36</td></tr>
+          <tr><td class="rank">10</td><td>EPIC-08 RAG 2.0</td><td>Now</td><td class="num">3.3</td></tr>
+          <tr><td class="rank">11</td><td>EPIC-15 Proactive Agents</td><td>Next</td><td class="num">3.27</td></tr>
+          <tr><td class="rank">12</td><td>EPIC-12 Voice &amp; Multi-modal</td><td>Next</td><td class="num">1.9</td></tr>
+          <tr><td class="rank">13</td><td>EPIC-09 Workspace Channels</td><td>Next</td><td class="num">1.6</td></tr>
+          <tr><td class="rank">14</td><td>EPIC-14 ИИ-аналитик 2.0</td><td>Next</td><td class="num">1.6</td></tr>
+          <tr><td class="rank">15</td><td>EPIC-10 Marketplace</td><td>Next</td><td class="num">1.4</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="wrap">
+    <div class="section-num">§ 05 — Технические требования</div>
+    <h2>LLM-стек и железо</h2>
+    <p class="section-lead">Принцип — мульти-модельный роутер, не моно-ставка. Разные задачи получают разные модели по соотношению качество / стоимость / латентность.</p>
+
+    <h3 style="margin-top: 32px; margin-bottom: 20px;">5 tier'ов моделей</h3>
+    <div class="tiers">
+
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Tier 1 — Reasoning</div>
+          <div class="tier-tag">70B+ · контекст ≥128K · TTFT ≤2 сек</div>
+        </div>
+        <p>Тяжёлые задачи: юридический анализ, инвест-комитет, multi-step agents. MMLU ≥80, RU-MMLU ≥75. Обязательно нативный function calling и structured output.</p>
+        <div class="tier-list" style="margin-top: 12px;">
+          <span>Cotype Pro</span><span>GigaChat 2 MAX on-prem</span><span>Qwen 2.5 72B</span><span>DeepSeek V3</span><span>Llama 3.3 70B</span><span>T-Pro</span>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Tier 2 — Workhorse</div>
+          <div class="tier-tag">7–32B · контекст 32K · ≥60 tok/sec</div>
+        </div>
+        <p>Повседневные ответы Core Copilot, RAG-ответы.</p>
+        <div class="tier-list" style="margin-top: 12px;">
+          <span>Cotype Light</span><span>Qwen 2.5 32B</span><span>YandexGPT 5 Lite on-prem</span><span>GigaChat Lite</span>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Tier 3 — Embeddings &amp; Rerankers</div>
+          <div class="tier-tag">Для RAG · мультиязычные · 1024+ dim</div>
+        </div>
+        <p>Гибридный поиск (dense + sparse BM25), кросс-энкодер реранкинг.</p>
+        <div class="tier-list" style="margin-top: 12px;">
+          <span>BGE-M3</span><span>e5-mistral-7b</span><span>ru-en-RoBERTa-large</span><span>BGE-reranker-v2-m3</span>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Tier 4 — Speech &amp; Vision</div>
+          <div class="tier-tag">ASR · TTS · OCR · VLM</div>
+        </div>
+        <p>WER ≤8% на корп. речи. OCR с layout (накладные, паспорта, договоры с печатями).</p>
+        <div class="tier-list" style="margin-top: 12px;">
+          <span>Whisper-large-v3</span><span>GigaAM</span><span>T-one (МТС)</span><span>SaluteSpeech</span><span>Qwen2.5-VL 32B</span><span>EasyOCR + Surya</span>
+        </div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <div class="tier-name">Tier 5 — Guardrails &amp; Classifiers</div>
+          <div class="tier-tag">PII · toxicity · prompt injection · routing</div>
+        </div>
+        <p>Защита от prompt injection, маскирование PII, классификатор для роутинга между копилотами.</p>
+        <div class="tier-list" style="margin-top: 12px;">
+          <span>LlamaGuard-3</span><span>Prompt-Guard</span><span>Natasha + DeepPavlov NER</span><span>BERT-180M router</span>
+        </div>
+      </div>
+
+    </div>
+
+    <h4 style="margin-top: 40px;">Обязательные характеристики любой модели в стеке</h4>
+    <ul style="list-style: none; padding: 0; margin-top: 12px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+      <li style="padding: 12px 16px; background: var(--bg-card); border-radius: 8px; font-size: 14px; color: var(--ink-soft);">✓ On-premise лицензия (Apache 2.0 / MIT / коммерческая on-prem)</li>
+      <li style="padding: 12px 16px; background: var(--bg-card); border-radius: 8px; font-size: 14px; color: var(--ink-soft);">✓ Без обращений к внешним API (полный air-gap)</li>
+      <li style="padding: 12px 16px; background: var(--bg-card); border-radius: 8px; font-size: 14px; color: var(--ink-soft);">✓ Поддержка квантизации FP16 / INT8 / INT4</li>
+      <li style="padding: 12px 16px; background: var(--bg-card); border-radius: 8px; font-size: 14px; color: var(--ink-soft);">✓ Fine-tuning на данных клиента (LoRA / QLoRA минимум)</li>
+    </ul>
+
+    <h3 style="margin-top: 56px; margin-bottom: 20px;">Sizing-эталоны железа</h3>
+    <div class="sizes">
+      <div class="size">
+        <div class="size-letter">S</div>
+        <div class="size-title">Малое внедрение</div>
+        <div class="size-spec">≤500 пользователей · 1–2 копилота · ~50 RPS peak</div>
+        <p style="font-size: 13px; color: var(--ink-soft);">2× H100 80GB или 4× A100 80GB. 512 GB RAM. 10 TB NVMe + 50 TB архив. 25 GbE.</p>
+        <div class="size-budget">
+          <span style="color: var(--ink-mute);">Бюджет capex</span>
+          <strong>25–40 млн ₽</strong>
+        </div>
+      </div>
+      <div class="size">
+        <div class="size-letter">M</div>
+        <div class="size-title">Средний enterprise</div>
+        <div class="size-spec">~5 000 пользователей · 4–6 копилотов · 300 RPS</div>
+        <p style="font-size: 13px; color: var(--ink-soft);">4–8× H100 для Tier 1 + 4× для Tier 2. 4 ноды × 1 TB RAM. 50 TB NVMe + 500 TB MinIO/Ceph. 100 GbE + InfiniBand HDR.</p>
+        <div class="size-budget">
+          <span style="color: var(--ink-mute);">Бюджет capex</span>
+          <strong>150–250 млн ₽</strong>
+        </div>
+      </div>
+      <div class="size">
+        <div class="size-letter">L</div>
+        <div class="size-title">Крупный / Гос</div>
+        <div class="size-spec">50К+ пользователей · 8 копилотов · 2000+ RPS · multi-tenancy</div>
+        <p style="font-size: 13px; color: var(--ink-soft);">16–32× H100/H200 для MoE-Tier 1. Кластер 64+ GPU, InfiniBand NDR 400 Gb/s. 500 TB NVMe + 5 PB object. Active-Active в 2 ДЦ.</p>
+        <div class="size-budget">
+          <span style="color: var(--ink-mute);">Бюджет capex</span>
+          <strong>1+ млрд ₽</strong>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px; margin-bottom: 20px;">Inference-стек</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Слой</th><th>Рекомендация</th><th>Альтернатива</th></tr></thead>
+        <tbody>
+          <tr><td>Inference engine</td><td><strong>vLLM</strong> — best throughput, continuous batching</td><td>TGI, TensorRT-LLM, SGLang</td></tr>
+          <tr><td>Квантизация</td><td>AWQ / GPTQ INT4 для Tier 2, FP8 на H100 для Tier 1</td><td>bitsandbytes</td></tr>
+          <tr><td>Serving / роутер</td><td><strong>LiteLLM</strong> + кастомный роутер по tier/cost/SLA</td><td>Portkey</td></tr>
+          <tr><td>Embedding serving</td><td>Infinity или TEI</td><td>—</td></tr>
+          <tr><td>Vector DB</td><td><strong>Qdrant</strong> — Rust, on-prem, top-1 perf</td><td>Milvus, Weaviate</td></tr>
+          <tr><td>Hybrid search</td><td>Qdrant + Tantivy (BM25)</td><td>OpenSearch</td></tr>
+          <tr><td>Memory store</td><td>Redis (KV) + PostgreSQL (long-term)</td><td>—</td></tr>
+          <tr><td>Orchestrator</td><td><strong>LangGraph</strong> или собственный</td><td>CrewAI, AutoGen</td></tr>
+          <tr><td>Observability</td><td>Langfuse self-hosted + Grafana</td><td>LangSmith on-prem</td></tr>
+          <tr><td>Eval / regression</td><td>Promptfoo + DeepEval + golden sets</td><td>Ragas</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top: 56px; margin-bottom: 20px;">Системные требования и ИБ</h3>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-tag">OS &amp; контейнеризация</div>
+        <div class="pillar-title">Astra SE 1.7+ · РЕД ОС 7.3+ · Альт 10 · RHEL 9</div>
+        <div class="pillar-desc">Kubernetes 1.28+ (Deckhouse, OpenShift, Astra K8s). Docker / Podman. Service mesh: Istio или Linkerd с обязательным mTLS.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">Identity &amp; secrets</div>
+        <div class="pillar-title">Keycloak + LDAP/AD/ЕСИА</div>
+        <div class="pillar-desc">HashiCorp Vault on-prem для секретов. Прозрачный SSO для всех компонентов хаба.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">Observability</div>
+        <div class="pillar-title">Prometheus · Grafana · Loki · Tempo</div>
+        <div class="pillar-desc">Полный стек метрик, логов, traces. Готовые дашборды для GPU/RAM, latency, hallucination rate.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-tag">Безопасность</div>
+        <div class="pillar-title">Air-gap · ГОСТ TLS · SIEM</div>
+        <div class="pillar-desc">DLP-инспекция prompts. Шифрование at-rest (LUKS + ГОСТ для гос) и in-transit (mTLS + ГОСТ TLS). Аудит в KUMA / MaxPatrol / RuSIEM.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px; margin-bottom: 20px;">Экономика M-сегмента (5 000 seats)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Статья</th><th>₽ / год</th></tr></thead>
+        <tbody>
+          <tr><td>GPU capex (амортизация 3 года)</td><td class="num">~70 млн</td></tr>
+          <tr><td>Электричество + охлаждение</td><td class="num">~15 млн</td></tr>
+          <tr><td>Лицензии on-prem LLM</td><td class="num">20–50 млн</td></tr>
+          <tr><td>DevOps + ML-инженеры (поддержка)</td><td class="num">~30 млн</td></tr>
+          <tr style="background: var(--accent-soft);"><td><strong>ИТОГО TCO</strong></td><td class="num"><strong>~140–170 млн ₽/год</strong></td></tr>
+          <tr><td>Цена клиенту (target gross margin 50%)</td><td class="num">~280–340 млн ₽/год</td></tr>
+          <tr><td>Per-seat в месяц</td><td class="num">~5–6 тыс ₽</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="metrics">
+  <div class="wrap">
+    <div class="section-num">§ 06 — Метрики и SLA</div>
+    <h2>North Star + supporting</h2>
+    <p class="section-lead">North Star — Weekly Active Tasks per Seat (WATS): сколько задач в неделю реально решает агент за пользователя. Цель: 5 → 25 за 18 месяцев.</p>
+
+    <div class="metrics">
+      <div class="metric"><div class="metric-name">MAU / Licensed seats</div><div class="metric-val">35 → 70%</div><div class="metric-target">Цель к концу 2027</div></div>
+      <div class="metric"><div class="metric-name">Tasks per user / week</div><div class="metric-val">5 → 25</div><div class="metric-target">5x за 18 мес</div></div>
+      <div class="metric"><div class="metric-name">Hallucination rate</div><div class="metric-val">12 → 3%</div><div class="metric-target">На gold sets</div></div>
+      <div class="metric"><div class="metric-name">Time-to-deploy</div><div class="metric-val">90 → 14</div><div class="metric-target">Дней</div></div>
+      <div class="metric"><div class="metric-name">NPS клиентов</div><div class="metric-val">25 → 50</div><div class="metric-target">К концу 2027</div></div>
+      <div class="metric"><div class="metric-name">ARR</div><div class="metric-val">3×</div><div class="metric-target">От baseline 2026</div></div>
+    </div>
+
+    <h3 style="margin-top: 56px; margin-bottom: 20px;">SLA / Performance targets</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Метрика</th><th>Target</th><th>Critical threshold</th></tr></thead>
+        <tbody>
+          <tr><td>TTFT (Time To First Token)</td><td class="num">≤ 2 сек</td><td class="num">≤ 5 сек</td></tr>
+          <tr><td>Throughput на пользователя</td><td class="num">≥ 30 tok/sec</td><td class="num">≥ 15 tok/sec</td></tr>
+          <tr><td>End-to-end RAG response (p95)</td><td class="num">≤ 8 сек</td><td class="num">≤ 20 сек</td></tr>
+          <tr><td>Async-задача — pickup time</td><td class="num">≤ 30 сек</td><td class="num">≤ 5 мин</td></tr>
+          <tr><td>Доступность платформы</td><td class="num">99.5%</td><td class="num">99.0%</td></tr>
+          <tr><td>Hallucination rate (sampled)</td><td class="num">&lt; 3%</td><td class="num">&lt; 8%</td></tr>
+          <tr><td>RAG recall@5 на корп. документах</td><td class="num">≥ 85%</td><td class="num">≥ 70%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="wrap">
+    <div class="section-num">§ 07 — Открытые вопросы</div>
+    <h2>Что нужно решить на следующей итерации</h2>
+    <p class="section-lead">Ключевые развилки, которые требуют дополнительной аналитики и обсуждения с командой и стейкхолдерами.</p>
+
+    <div class="questions">
+      <div class="question"><strong>Pricing model.</strong> Per-seat vs per-task vs per-copilot — нужна validation на 5–10 enterprise-клиентах.</div>
+      <div class="question"><strong>Build vs partner для Аналитика.</strong> Строим Text-to-SQL сами или интегрируем Visiology / FineBI?</div>
+      <div class="question"><strong>LLM-стратегия.</strong> Ставка на Cotype, или мульти-модель (Cotype + Qwen + GigaChat) с роутингом?</div>
+      <div class="question"><strong>Marketplace business model.</strong> Revenue share % для партнёров — предлагаю 30/70 как у Apple, обсудить.</div>
+      <div class="question"><strong>Госсектор go-to-market.</strong> Прямые продажи или через системного интегратора (Ростелеком, Софтлайн)?</div>
+      <div class="question"><strong>Конкурентная разведка.</strong> Что уже есть у Яндекса (Алиса.Бизнес), Сбера (GigaChat enterprise), VK (GigaCode)? Нужен battlecard.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Corporate Copilots Hub · Backlog &amp; Roadmap · v0.2 · 2026-04-26</p>
+    <p style="margin-top: 8px;">MWS AI · Екатерина Окунева, CPO</p>
+  </div>
+</footer>
+
+</body>
+</html>
